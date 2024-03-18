@@ -10,10 +10,277 @@
             type="mmcs.assignment3_calculator.viewmodel.Calculator" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/result"
+            android:text="@{viewModel.display}"
+            android:textSize="64dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:layout_above="@id/buttons_layout">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </TextView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/buttons_layout">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:backgroundTint="@color/black"
+            android:id="@+id/numbers"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_marginBottom="-10dp"
+                >
+
+                <Button
+                    android:id="@+id/seven"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#434343"
+                    android:layout_gravity="bottom"
+                    android:onClick="@{() -> viewModel.addDigit(7)}"
+                    android:text="7">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/eight"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.addDigit(8)}"
+                    android:backgroundTint="#434343"
+                    android:text="8">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/nine"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#434343"
+                    android:onClick="@{() -> viewModel.addDigit(9)}"
+                    android:text="9">
+
+                </Button>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_marginBottom="-10dp"
+                >
+
+                <Button
+                    android:id="@+id/four"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.addDigit(4)}"
+                    android:backgroundTint="#434343"
+                    android:text="4">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/five"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.addDigit(5)}"
+                    android:backgroundTint="#434343"
+                    android:text="5">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/six"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#434343"
+                    android:onClick="@{() -> viewModel.addDigit(6)}"
+                    android:text="6">
+
+                </Button>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="-10dp"
+                >
+
+                <Button
+                    android:id="@+id/one"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addDigit(1)}"
+                    android:backgroundTint="#434343"
+                    android:text="1">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/two"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addDigit(2)}"
+                    android:backgroundTint="#434343"
+                    android:text="2">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/three"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addDigit(3)}"
+                    android:backgroundTint="#434343"
+                    android:text="3">
+
+                </Button>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:id="@+id/dot"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addPoint()}"
+                    android:backgroundTint="#434343"
+                    android:text=".">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/zero"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.addDigit(0)}"
+                    android:backgroundTint="#434343"
+                    android:text="0">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/equal"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#434343"
+                    android:onClick="@{() -> viewModel.compute()}"
+                    android:layout_weight="1"
+                    android:text="=">
+
+                </Button>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ops"
+            android:layout_toRightOf="@id/numbers"
+            android:backgroundTint="#636363"
+            >
+            <Button
+                android:id="@+id/ac"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:backgroundTint="#636363"
+                android:layout_marginBottom="-10dp"
+                android:onClick="@{() -> viewModel.reset()}"
+                android:text="AC">
+
+            </Button>
+            <Button
+                android:id="@+id/del"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:backgroundTint="#636363"
+                android:layout_marginBottom="-10dp"
+                android:onClick="@{() -> viewModel.clear()}"
+                android:text="DEL">
+
+            </Button>
+
+            <Button
+                android:id="@+id/div"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+
+                android:layout_marginBottom="-10dp"
+                android:backgroundTint="#636363"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.addOperation(Operation.DIV)}"
+                android:text="/">
+
+            </Button>
+            <Button
+                android:id="@+id/mult"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:gravity="center"
+                android:layout_marginBottom="-10dp"
+                android:onClick="@{() -> viewModel.addOperation(Operation.MUL)}"
+                android:backgroundTint="#636363"
+                android:text="*">
+
+            </Button>
+            <Button
+                android:id="@+id/minus"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:gravity="center"
+                android:layout_marginBottom="-10dp"
+                android:onClick="@{() -> viewModel.addOperation(Operation.SUB)}"
+                android:backgroundTint="#636363"
+                android:text="-">
+
+            </Button>
+            <Button
+                android:id="@+id/plus"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.addOperation(Operation.ADD)}"
+                android:backgroundTint="#636363"
+
+                android:text="+">
+
+            </Button>
+
+        </LinearLayout>
+    </RelativeLayout>
+    </RelativeLayout>
 </layout>
